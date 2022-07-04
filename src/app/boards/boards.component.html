@@ -1,0 +1,42 @@
+
+
+<div fxLayout="column"fxFlex="75" fxLayoutAlign="center center">
+    <div class="btn">
+        <button class="btn btn-light "(click)="addUser()">+ Add User</button>
+    </div>
+    <!-- <button class="btn btn-light "(click)="close()">Done</button> -->
+    <div class="container">
+        <div class="row">
+            <div class="card border-dark mr-3" style="max-width: 400px;width: 95%;margin-inline: 15px;"*ngFor="let item of showData;let i = index" 
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="item"
+            [cdkDropListConnectedTo]="[item]"
+            class="example-list"
+            (cdkDropListDropped)=" drag_drop($event)">
+                <div class="card-header" contenteditable="true">Board : {{item.name}}
+                </div>
+                <mat-icon class="close" (click)="deleteUserBoard(i)">close</mat-icon>
+                
+                <div *ngIf="item.task">
+
+            
+                <ol class="card-body text-dark"  contenteditable="true">
+                 
+                  <li *ngFor="let task of item.task"> {{task}}</li>
+                  <!-- {{item.task[1]}} -->
+                </ol>
+              </div>
+                <button class="card-text" id="{{i}}" (click)="addTask($event,i)"mat-dialog-close>
+                  <span class="material-symbols-outlined">
+                    add_circle
+                    </span>
+                </button>
+              </div>
+        </div>
+      </div>
+   
+</div>
+
+
+  

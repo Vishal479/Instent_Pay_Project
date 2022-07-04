@@ -1,0 +1,10 @@
+
+<form name="form" [formGroup]="task"  >
+    <div class="form-group">
+      <label for="firstName">Task</label>
+      <input type="text"  class="form-control" formControlName="AddTask" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="button"[disabled]="task.invalid" (click)="onSubmit()">Save Task</button>
+      </div>
+  </form>
